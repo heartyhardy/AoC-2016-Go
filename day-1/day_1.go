@@ -97,8 +97,9 @@ func findDistanceToBunnyHQ(directions []string) {
 	fmt.Println("Distance to Bunny HQ ->\n\tPart I: ", getAbs(x)+getAbs(y), "\n\tPart II: ", getAbs(firstIntersection.x)+getAbs(firstIntersection.y))
 }
 
+//RunDay1 - Run solution for day 1
 func main() {
-	directions := readDirections("./inputs/day 1.txt")
+	directions := readDirections("../inputs/day 1.txt")
 	findDistanceToBunnyHQ(directions)
 
 }
