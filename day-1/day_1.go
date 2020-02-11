@@ -95,6 +95,9 @@ func findDistanceToBunnyHQ(directions []string) {
 		y += heading.v * heading.y
 	}
 	fmt.Println("Distance to Bunny HQ ->\n\tPart I: ", getAbs(x)+getAbs(y), "\n\tPart II: ", getAbs(firstIntersection.x)+getAbs(firstIntersection.y))
+	for k, v := range grid {
+		fmt.Println(k, v)
+	}
 }
 
 //RunDay1 - Run solution for day 1
