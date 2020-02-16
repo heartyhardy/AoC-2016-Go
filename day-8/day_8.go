@@ -110,9 +110,9 @@ func display(tinyLCD [][]int) {
 		for _, col := range rows {
 			switch col {
 			case 0:
-				fmt.Printf("\u001b[38;5;18m\u001b[48;5;17m%2v\u001b[0m", "◻")
+				fmt.Printf("\u001b[38;5;18m\u001b[48;5;17m%1v\u001b[0m", "◻")
 			case 1:
-				fmt.Printf("\u001b[38;5;196m\u001b[48;5;202m%2v\u001b[0m", "◼")
+				fmt.Printf("\u001b[38;5;196m\u001b[48;5;202m%1v\u001b[0m", "◼")
 			}
 		}
 		fmt.Println()
