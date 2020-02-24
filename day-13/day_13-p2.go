@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const secretKey = 1362
 
@@ -108,10 +110,6 @@ func getShortestPath(grid [][]*Cell, tx, ty uint8) {
 						continue
 					}
 					locations++
-					// if locations == 138 {
-					// 	fmt.Println(i, *next)
-					// 	return
-					// }
 					grid[dy][dx].visited = true
 					grid[dy][dx].parent = grid[next.y][next.x]
 					queue = queue.enqueue(grid[dy][dx])
@@ -135,7 +133,6 @@ func isPathable(x, y uint16) bool {
 func printGrid(grid [][]*Cell) {
 	var r, c uint16
 
-	fmt.Println()
 	for r = 0; r < height; r++ {
 		for c = 0; c < width; c++ {
 			if grid[r][c].flag {

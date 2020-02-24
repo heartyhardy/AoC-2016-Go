@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 const secretKey = 1362
 
@@ -64,7 +67,7 @@ func scanGrid() {
 		}
 	}
 	getShortestPath(grid, 31, 39)
-	printGrid(grid)
+	//printGrid(grid)
 }
 
 func getShortestPath(grid [][]*Cell, tx, ty uint8) {
@@ -87,8 +90,11 @@ func getShortestPath(grid [][]*Cell, tx, ty uint8) {
 					steps++
 					grid[parent.y][parent.x].path = true
 					parent = parent.parent
+					printGrid(grid)
+					time.Sleep(100 * time.Millisecond)
 				}
-				fmt.Println("Part I: Steps: ", steps)
+				//fmt.Println("Part I: Steps: ", steps)
+				return
 			}
 
 			xs := []int{0, 1, 0, -1}
@@ -104,6 +110,8 @@ func getShortestPath(grid [][]*Cell, tx, ty uint8) {
 					grid[dy][dx].visited = true
 					grid[dy][dx].parent = grid[next.y][next.x]
 					queue = queue.enqueue(grid[dy][dx])
+					printGrid(grid)
+					time.Sleep(100 * time.Millisecond)
 				}
 			}
 		}
@@ -124,12 +132,18 @@ func isPathable(x, y uint16) bool {
 func printGrid(grid [][]*Cell) {
 	var r, c uint16
 
+	fmt.Printf("\033[2J")
 	fmt.Println()
+
 	for r = 0; r < height; r++ {
 		for c = 0; c < width; c++ {
 			if grid[r][c].flag {
 				if grid[r][c].path {
 					fmt.Printf("\u001b[48;5;17m\u001b[38;5;40m%v\u001b[0m\u001b[0m", "◼ ")
+					continue
+				}
+				if grid[r][c].visited {
+					fmt.Printf("\u001b[48;5;17m\u001b[38;5;63m%v\u001b[0m\u001b[0m", "◼ ")
 					continue
 				}
 				fmt.Printf("\u001b[48;5;17m\u001b[38;5;18m%v\u001b[0m\u001b[0m", "◼ ")
